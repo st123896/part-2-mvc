@@ -1,0 +1,39 @@
+﻿@model IEnumerable<W98.Models.LecturerClaim>
+
+<h2>Lecturer Claims</h2>
+
+<a asp-action="CreateEdit">Create New Claim</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Hourly Rate</th>
+            <th>Hours Worked</th>
+            <th>Module code</th>
+            <th>Description</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lecturerClaim in Model)
+        {
+            <tr>
+                <td>@lecturerClaim.ID</td>
+                <td>@lecturerClaim.Name</td>
+                <td>@lecturerClaim.Surname</td>
+                <td>@lecturerClaim.HourlyRate</td>
+                <td>@lecturerClaim.HoursWorked</td>
+                <td>@lecturerClaim.ModuleCode</td>
+                <td>@lecturerClaim.Description</td>
+                <td>@lecturerClaim.Status</td>
+                <td>
+                    <a asp-action="CreateEdit" class="btn btn-primary">Edit </a>
+                    <a asp-action="Delete" asp-route-id="@lecturerClaim.ID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

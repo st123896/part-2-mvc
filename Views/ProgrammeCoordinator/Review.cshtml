@@ -1,0 +1,27 @@
+﻿@model W98.Models.LecturerClaim
+
+<h2>Review Lecturer Claim</h2>
+
+<div>
+    <h4>@Model.Name @Model.Surname</h4>
+    <p><strong>Module Code:</strong> @Model.ModuleCode</p>
+    <p><strong>Description:</strong> @Model.Description</p>
+    <p><strong>Hourly Rate:</strong> R@Model.HourlyRate</p>
+    <p><strong>Hours Worked:</strong> @Model.HoursWorked</p>
+</div>
+
+<form method="post" asp-action="Approve">
+    <input type="hidden" asp-for="ID" />
+    <label>Feedback:</label>
+    <textarea class="form-control" name="feedback"></textarea>
+    <button type="submit" class="btn btn-success mt-2">Approve</button>
+</form>
+
+<form method="post" asp-action="Reject" class="mt-2">
+    <input type="hidden" asp-for="ID" />
+    <label>Feedback:</label>
+    <textarea class="form-control" name="feedback"></textarea>
+    <button type="submit" class="btn btn-danger mt-2">Reject</button>
+</form>
+
+<a asp-action="Claims" class="btn btn-secondary mt-3">Back to Claims</a>

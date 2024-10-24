@@ -1,0 +1,46 @@
+﻿@model IEnumerable<W98.Models.LecturerClaim>
+
+<h2>Lecturer Claims</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Module Code</th>
+            <th>Status</th>
+            <th>Feedback</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lecturerClaim in Model)
+        {
+            <tr>
+                <td>@lecturerClaim.ID</td>
+                <td>@lecturerClaim.Name</td>
+                <td>@lecturerClaim.Surname</td>
+                <td>@lecturerClaim.ModuleCode</td>
+                <td>
+                    @if (lecturerClaim.IsApproved == null)
+                    {
+                        <span class="badge bg-warning">Pending</span>
+                    }
+                    else if (lecturerClaim.IsApproved == true)
+                    {
+                        <span class="badge bg-success">Approved</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Rejected</span>
+                    }
+                </td>
+                <td>@lecturerClaim.Feedback</td>
+                <td>
+                    <a asp-action="Review" asp-route-id="@lecturerClaim.ID" class="btn btn-primary">Review</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
